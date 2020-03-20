@@ -2,6 +2,7 @@
   "name": "vk-bank-coin",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://edinoderjec.github.io/vk-bank-coin/",
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
