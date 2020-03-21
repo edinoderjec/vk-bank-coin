@@ -11,7 +11,7 @@ class Paneles extends React.Component {
         super(props);
 
         this.state = {
-            activeStory: 'more'
+            activeStory: 'myAccount'
         };
         this.onStoryChange = this.onStoryChange.bind(this);
     } 
