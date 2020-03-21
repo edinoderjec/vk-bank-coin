@@ -6,6 +6,7 @@ import Icon28More from '@vkontakte/icons/dist/28/more';
 import Icon28GlobeOutline from '@vkontakte/icons/dist/28/globe_outline';
 import '@vkontakte/vkui/dist/vkui.css'
 
+
 class Paneles extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +20,7 @@ class Paneles extends React.Component {
     onStoryChange(e) {
         this.setState({ activeStory: e.currentTarget.dataset.story })
     }
-
+    
     render() {
 
         return(
