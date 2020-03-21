@@ -12,7 +12,7 @@ const App = () => {
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
+		bridge.subscribe(({ detail: { type, data } }) => {
 			if (type === 'VKWebAppUpdateConfig') {
 				const schemeAttribute = document.createAttribute('scheme');
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
@@ -39,4 +39,3 @@ const App = () => {
 }
 
 export default App;
-

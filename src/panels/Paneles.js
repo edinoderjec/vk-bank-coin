@@ -15,16 +15,17 @@ class Paneles extends React.Component {
             activeStory: 'myAccount'
         };
         this.onStoryChange = this.onStoryChange.bind(this);
-    } 
+    }
 
     onStoryChange(e) {
         this.setState({ activeStory: e.currentTarget.dataset.story })
     }
-    
+
     render() {
 
-        return(
-             <Epic activeStory={this.state.activeStory} tabbar={
+        return (
+            <View activePanel={this.state.activePanel} header={false}>
+            <Epic activeStory={this.state.activeStory} tabbar={
                 <Tabbar>
                     <TabbarItem
                         onClick={this.onStoryChange}
@@ -51,7 +52,7 @@ class Paneles extends React.Component {
                         text="Ещё"
                     ><Icon28More /></TabbarItem>
                 </Tabbar>
-               }>
+            }>
                 <View id="myAccount" activePanel="myAccount">
                     <Panel id="myAccount">
                         <PanelHeader>Мои счета</PanelHeader>
@@ -62,18 +63,19 @@ class Paneles extends React.Component {
                         <PanelHeader>Рынок</PanelHeader>
                     </Panel>
                 </View>
-               <View id="notifications" activePanel="notifications">
+                <View id="notifications" activePanel="notifications">
                     <Panel id="notifications">
                         <PanelHeader>Уведомления</PanelHeader>
                     </Panel>
                 </View>
-               <View id="more" activePanel="more">
+                <View id="more" activePanel="more">
                     <Panel id="more">
                         <PanelHeader>Ещё</PanelHeader>
-                </Panel>
+                    </Panel>
                 </View>
-               </Epic>
-              )
-       }
+                </Epic>
+            </View>
+        )
+    }
 }
 export default Paneles;
