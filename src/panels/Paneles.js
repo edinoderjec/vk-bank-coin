@@ -12,7 +12,7 @@ class Paneles extends React.Component {
         super(props);
 
         this.state = {
-            activeStory: 'myAccount'
+            activeStory: 'more'
         };
         this.onStoryChange = this.onStoryChange.bind(this);
     }
@@ -24,21 +24,27 @@ class Paneles extends React.Component {
     render() {
 
         return (
-
             <Epic activeStory={this.state.activeStory} tabbar={
                 <Tabbar>
                     <TabbarItem
                         onClick={this.onStoryChange}
-                        selected={this.state.activeStory === 'myAccount'}
-                        data-story="myAccount"
-                        text="Мои счета"
-                    ><Icon28MoneyRequestOutline /></TabbarItem>
+                        selected={this.state.activeStory === 'feed'}
+                        data-story="feed"
+                        text="Новости"
+                    ><Icon28NewsfeedOutline /></TabbarItem>
                     <TabbarItem
                         onClick={this.onStoryChange}
-                        selected={this.state.activeStory === 'market'}
-                        data-story="market"
-                        text="Рынок"
-                    ><Icon28GlobeOutline /></TabbarItem>
+                        selected={this.state.activeStory === 'discover'}
+                        data-story="discover"
+                        text="Поиск"
+                    ><Icon28SearchOutline /></TabbarItem>
+                    <TabbarItem
+                        onClick={this.onStoryChange}
+                        selected={this.state.activeStory === 'messages'}
+                        data-story="messages"
+                        label="12"
+                        text="Сообщения"
+                    ><Icon28MessageOutline /></TabbarItem>
                     <TabbarItem
                         onClick={this.onStoryChange}
                         selected={this.state.activeStory === 'notifications'}
@@ -53,14 +59,19 @@ class Paneles extends React.Component {
                     ><Icon28More /></TabbarItem>
                 </Tabbar>
             }>
-                <View id="myAccount" activePanel="myAccount">
-                    <Panel id="myAccount">
-                        <PanelHeader>Мои счета</PanelHeader>
+                <View id="feed" activePanel="feed">
+                    <Panel id="feed">
+                        <PanelHeader>Новости</PanelHeader>
                     </Panel>
                 </View>
-                <View id="market" activePanel="market" header={false}>
-                    <Panel id="market" separator={false}>
-                        <PanelHeaderSimple>Рынок</PanelHeaderSimple>
+                <View id="discover" activePanel="discover">
+                    <Panel id="discover">
+                        <PanelHeader>Поиск</PanelHeader>
+                    </Panel>
+                </View>
+                <View id="messages" activePanel="messages">
+                    <Panel id="messages">
+                        <PanelHeader>Сообщения</PanelHeader>
                     </Panel>
                 </View>
                 <View id="notifications" activePanel="notifications">
@@ -73,8 +84,7 @@ class Paneles extends React.Component {
                         <PanelHeader>Ещё</PanelHeader>
                     </Panel>
                 </View>
-                </Epic>
-                
+            </Epic>
         )
     }
 }
