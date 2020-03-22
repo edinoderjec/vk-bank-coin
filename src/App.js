@@ -32,7 +32,7 @@ const App = () => {
 	};
 
 	return (
-		<View activePanel={activePanel} header={false} >
+		<View activePanel={activePanel} >
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
 		</View>
 	);
