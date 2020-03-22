@@ -58,8 +58,8 @@ class Paneles extends React.Component {
                         <PanelHeader>Мои счета</PanelHeader>
                     </Panel>
                 </View>
-                <View id="market" activePanel="market" >
-                    <Panel id="market">
+                <View id="market" header={false} activePanel="market" >
+                    <Panel separator={false} id="market">
                         <PanelHeaderSimple>Рынок</PanelHeaderSimple>
                     </Panel>
                 </View>
