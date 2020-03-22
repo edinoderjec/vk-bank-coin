@@ -60,7 +60,7 @@ class Paneles extends React.Component {
                 </View>
                 <View id="market" activePanel="market" >
                     <Panel id="market">
-                        <PanelHeader>Рынок</PanelHeader>
+                        <PanelHeaderSimple>Рынок</PanelHeaderSimple>
                     </Panel>
                 </View>
                 <View id="notifications" activePanel="notifications">
