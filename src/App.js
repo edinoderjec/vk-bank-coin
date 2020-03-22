@@ -53,9 +53,9 @@ class Paneles extends React.Component {
                     ><Icon28More /></TabbarItem>
                 </Tabbar>
             }>
-                <View id="myAccount" activePanel="myAccount">
-                    <Panel id="myAccount">
-                        <PanelHeader>Мои счета</PanelHeader>
+                <View id="myAccount" activePanel="myAccount" header={false}>
+                    <Panel id="myAccount" separator={false}>
+                        <PanelHeaderSimple>Мои счета</PanelHeaderSimple>
                     </Panel>
                 </View>
                 <View id="market" activePanel="market" header={false}>
@@ -63,14 +63,14 @@ class Paneles extends React.Component {
                         <PanelHeaderSimple>Рынок</PanelHeaderSimple>
                     </Panel>
                 </View>
-                <View id="notifications" activePanel="notifications">
-                    <Panel id="notifications">
-                        <PanelHeader>Уведомления</PanelHeader>
+                <View id="notifications" activePanel="notifications" header={false}>
+                    <Panel id="notifications" separator={false}>
+                        <PanelHeaderSimple>Уведомления</PanelHeaderSimple>
                     </Panel>
                 </View>
-                <View id="more" activePanel="more">
-                    <Panel id="more">
-                        <PanelHeader>Ещё</PanelHeader>
+                <View id="more" activePanel="more" header={false}>
+                    <Panel id="more" separator={false}>
+                        <PanelHeaderSimple>Ещё</PanelHeaderSimple>
                     </Panel>
                 </View>
             </Epic>
