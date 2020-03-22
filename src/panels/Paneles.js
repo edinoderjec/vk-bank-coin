@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Panel, PanelHeader, View, Epic, Tabbar, TabbarItem } from '@vkontakte/vkui';
+import { Panel, PanelHeader, View, Epic, Tabbar, TabbarItem, PanelHeaderSimple } from '@vkontakte/vkui';
 import Icon28MoneyRequestOutline from '@vkontakte/icons/dist/28/money_request_outline';
 import Icon28Notifications from '@vkontakte/icons/dist/28/notifications';
 import Icon28More from '@vkontakte/icons/dist/28/more';
@@ -24,7 +24,7 @@ class Paneles extends React.Component {
     render() {
 
         return (
-            <View activePanel={this.state.activePanel} header={false}>
+
             <Epic activeStory={this.state.activeStory} tabbar={
                 <Tabbar>
                     <TabbarItem
@@ -58,7 +58,7 @@ class Paneles extends React.Component {
                         <PanelHeader>Мои счета</PanelHeader>
                     </Panel>
                 </View>
-                <View id="market" activePanel="market">
+                <View id="market" activePanel="market" >
                     <Panel id="market">
                         <PanelHeader>Рынок</PanelHeader>
                     </Panel>
@@ -74,7 +74,7 @@ class Paneles extends React.Component {
                     </Panel>
                 </View>
                 </Epic>
-            </View>
+                
         )
     }
 }

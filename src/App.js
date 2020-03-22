@@ -7,7 +7,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import Home from './panels/Paneles';
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
+	const [activePanel, setActivePanel,] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
@@ -32,7 +32,7 @@ const App = () => {
 	};
 
 	return (
-		<View activePanel={activePanel} header={false} popout={popout}>
+		<View activePanel={activePanel} header={false} >
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
 		</View>
 	);
