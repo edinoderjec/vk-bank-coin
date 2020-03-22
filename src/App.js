@@ -1,41 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import bridge from '@vkontakte/vk-bridge';
-import View from '@vkontakte/vkui/dist/components/View/View';
-import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
-import '@vkontakte/vkui/dist/vkui.css';
+import React from 'react';
+import { Panel, PanelHeader, View, Epic, Tabbar, TabbarItem, PanelHeaderSimple } from '@vkontakte/vkui';
+import Icon28MoneyRequestOutline from '@vkontakte/icons/dist/28/money_request_outline';
+import Icon28Notifications from '@vkontakte/icons/dist/28/notifications';
+import Icon28More from '@vkontakte/icons/dist/28/more';
+import Icon28GlobeOutline from '@vkontakte/icons/dist/28/globe_outline';
+import '@vkontakte/vkui/dist/vkui.css'
 
-import Home from './panels/Paneles';
 
-const App = () => {
-	const [activePanel, setActivePanel,] = useState('home');
-	const [fetchedUser, setUser] = useState(null);
-	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+class Paneles extends React.Component {
+    constructor(props) {
+        super(props);
 
-	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data } }) => {
-			if (type === 'VKWebAppUpdateConfig') {
-				const schemeAttribute = document.createAttribute('scheme');
-				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-				document.body.attributes.setNamedItem(schemeAttribute);
-			}
-		});
-		async function fetchData() {
-			const user = await bridge.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
-	}, []);
+        this.state = {
+            activeStory: 'myAccount'
+        };
+        this.onStoryChange = this.onStoryChange.bind(this);
+    }
 
-	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
-	};
+    onStoryChange(e) {
+        this.setState({ activeStory: e.currentTarget.dataset.story })
+    }
 
-	return (
-		<View activePanel={activePanel} >
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-		</View>
-	);
+    render() {
+
+        return (
+
+            <Epic activeStory={this.state.activeStory} tabbar={
+                <Tabbar>
+                    <TabbarItem
+                        onClick={this.onStoryChange}
+                        selected={this.state.activeStory === 'myAccount'}
+                        data-story="myAccount"
+                        text="Мои счета"
+                    ><Icon28MoneyRequestOutline /></TabbarItem>
+                    <TabbarItem
+                        onClick={this.onStoryChange}
+                        selected={this.state.activeStory === 'market'}
+                        data-story="market"
+                        text="Рынок"
+                    ><Icon28GlobeOutline /></TabbarItem>
+                    <TabbarItem
+                        onClick={this.onStoryChange}
+                        selected={this.state.activeStory === 'notifications'}
+                        data-story="notifications"
+                        text="Уведомлен."
+                    ><Icon28Notifications /></TabbarItem>
+                    <TabbarItem
+                        onClick={this.onStoryChange}
+                        selected={this.state.activeStory === 'more'}
+                        data-story="more"
+                        text="Ещё"
+                    ><Icon28More /></TabbarItem>
+                </Tabbar>
+            }>
+                <View id="myAccount" activePanel="myAccount">
+                    <Panel id="myAccount">
+                        <PanelHeader>Мои счета</PanelHeader>
+                    </Panel>
+                </View>
+                <View id="market" activePanel="market" header={false}>
+                    <Panel id="market" separator={false}>
+                        <PanelHeaderSimple>Рынок</PanelHeaderSimple>
+                    </Panel>
+                </View>
+                <View id="notifications" activePanel="notifications">
+                    <Panel id="notifications">
+                        <PanelHeader>Уведомления</PanelHeader>
+                    </Panel>
+                </View>
+                <View id="more" activePanel="more">
+                    <Panel id="more">
+                        <PanelHeader>Ещё</PanelHeader>
+                    </Panel>
+                </View>
+            </Epic>
+
+        )
+    }
 }
-
-export default App;
+export default Paneles;
